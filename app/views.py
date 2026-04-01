@@ -15,6 +15,7 @@ class IndexView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["star_range"] = range(1, 6)
+        context["top_products"] = Product.objects.order_by('-review')[:4]
         return context
 
 class MahsulotListView(ListView):

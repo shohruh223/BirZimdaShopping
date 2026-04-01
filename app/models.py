@@ -32,7 +32,7 @@ class Product(models.Model):
     description = models.TextField(null=True, blank=True)
     price = models.IntegerField()
     old_price = models.IntegerField(null=True, blank=True)
-    created_at = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
     author = models.CharField()
 
     def __str__(self):
