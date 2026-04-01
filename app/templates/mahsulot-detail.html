@@ -1,0 +1,139 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block title %} Masulot-detail {% endblock title %}
+
+{% block content %}
+
+    <main class="page-section">
+        <div class="container">
+            <div class="breadcrumb"><a href="index.html">Bosh sahifa</a><span>/</span><a href="mahsulotlar.html">Mahsulotlar</a><span>/</span><span>iPhone 15 Pro Max</span>
+            </div>
+            <section class="product-detail-layout">
+                <div class="card-surface detail-gallery">
+                    <div class="detail-gallery-main"><img
+                            src="{{ product.img.url }}"
+                            alt="iPhone 15 Pro Max"></div>
+                </div>
+                <div class="card-surface detail-info">
+                    <span class="detail-chip">Smartfonlar</span>
+                    <h1>{{ product.title }}</h1>
+                    <p class="detail-short-desc">{{ product.description }}</p>
+                    <div class="detail-price-row">
+                        <span class="old-price">{{ product.old_price }} $</span>
+                        <div class="price">{{ product.price }} $</div>
+                    </div>
+
+                    <ul class="rating">
+    <li class="{% if product.review < 1 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+    <li class="{% if product.review < 2 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+    <li class="{% if product.review < 3 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+    <li class="{% if product.review < 4 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+    <li class="{% if product.review < 5 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+</ul>
+                    <div class="detail-stock"><i class="fa-solid fa-circle-check"></i> Omborda bor</div>
+                    <div class="detail-actions">
+                        <a href="savatcha.html" class="btn btn-primary">Savatchaga qo'shish</a>
+                        <a href="checkout.html" class="btn btn-outline">Hoziroq buyurtma</a>
+                    </div>
+                    <div class="detail-meta-list">
+                        <div><strong>Brend:</strong> Apple</div>
+                        <div><strong>Xotira:</strong> 256 GB</div>
+                        <div><strong>Rang:</strong> Natural Titanium</div>
+                        <div><strong>Kafolat:</strong> 12 oy</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="detail-bottom-grid">
+                <article class="card-surface detail-description">
+                    <h3>Tavsif</h3>
+                    <p>Ushbu sahifa faqat frontend ko'rinishi uchun tayyorlangan. Mahsulot ma'lumotlari statik yozilgan
+                        va hech qanday JavaScript orqali yuklanmaydi. Keyinchalik siz bu bloklarni xohlagan backend
+                        bilan almashtirishingiz mumkin.</p>
+                    <p>iPhone 15 Pro Max modelida kuchli protsessor, yuqori sifatli ekran va professional darajadagi
+                        suratga olish imkoniyatlari jamlangan. Premium foydalanuvchilar uchun juda qulay tanlov.</p>
+                </article>
+                <aside class="card-surface related-products">
+                    <h3>O'xshash mahsulotlar</h3>
+                    <div class="product-grid">
+                        <div class="product-card">
+                            <div class="badge">Yangi</div>
+                            <a href="mahsulot-detail.html" class="product-img"><img
+                                    src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=80"
+                                    alt="Samsung Galaxy S24 Ultra"></a>
+                            <div class="product-info">
+                                <div class="product-category">Smartfonlar</div>
+                                <h3 class="product-title"><a href="mahsulot-detail.html">Samsung Galaxy S24 Ultra</a>
+                                </h3>
+                                <div class="product-price-row">
+                                    <div class="price-box"><span class="price">11 799 000 so'm</span></div>
+                                    <a href="savatcha.html" class="add-cart-btn"><i
+                                            class="fa-solid fa-cart-plus"></i></a>
+                                </div>
+                                <a href="mahsulot-detail.html" class="btn btn-outline"
+                                   style="margin-top:14px;width:100%;">Batafsil</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="badge">TOP</div>
+                            <a href="mahsulot-detail.html" class="product-img"><img
+                                    src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=900&q=80"
+                                    alt="MacBook Air M3 13"></a>
+                            <div class="product-info">
+                                <div class="product-category">Noutbuklar</div>
+                                <h3 class="product-title"><a href="mahsulot-detail.html">MacBook Air M3 13"</a></h3>
+                                <div class="product-price-row">
+                                    <div class="price-box"><span class="old-price">16 200 000 so'm</span><span
+                                            class="price">15 499 000 so'm</span></div>
+                                    <a href="savatcha.html" class="add-cart-btn"><i
+                                            class="fa-solid fa-cart-plus"></i></a>
+                                </div>
+                                <a href="mahsulot-detail.html" class="btn btn-outline"
+                                   style="margin-top:14px;width:100%;">Batafsil</a>
+                            </div>
+                        </div>
+                        <div class="product-card">
+
+                            <a href="mahsulot-detail.html" class="product-img"><img
+                                    src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=900&q=80"
+                                    alt="LG OLED evo 55"></a>
+                            <div class="product-info">
+                                <div class="product-category">Televizorlar</div>
+                                <h3 class="product-title"><a href="mahsulot-detail.html">LG OLED evo 55"</a></h3>
+                                <div class="product-price-row">
+                                    <div class="price-box"><span class="price">14 299 000 so'm</span></div>
+                                    <a href="savatcha.html" class="add-cart-btn"><i
+                                            class="fa-solid fa-cart-plus"></i></a>
+                                </div>
+                                <a href="mahsulot-detail.html" class="btn btn-outline"
+                                   style="margin-top:14px;width:100%;">Batafsil</a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+        </div>
+    </main>
+
+
+
+{% endblock content %}
+
+
+
+
+
+

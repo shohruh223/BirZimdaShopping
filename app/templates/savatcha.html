@@ -1,0 +1,80 @@
+
+
+
+
+
+
+
+
+
+
+
+
+{% extends 'base.html' %}
+
+{% block title %} Register {% endblock title %}
+
+{% block content %}
+
+<main class="page-section">
+    <div class="container">
+        <div class="section-title">
+            <h1>Savatcha</h1>
+            <p>Bu yerda tanlangan mahsulotlar oddiy ko'rinishda aks etadi</p>
+            <div class="line"></div>
+        </div>
+        <section class="cart-layout">
+            <div class="cart-list card-surface">
+                <div class="cart-head">
+                    <h2>Mahsulotlar (2 dona)</h2>
+                    <a href="mahsulotlar.html" class="btn btn-outline cart-clear-btn">Xaridni davom ettirish</a>
+                </div>
+
+                <div class="cart-item">
+                    <a href="mahsulot-detail.html" class="cart-item-image"><img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80" alt="iPhone 15 Pro Max"></a>
+                    <div class="cart-item-info">
+                        <span class="product-category">Smartfonlar</span>
+                        <h3><a href="mahsulot-detail.html">iPhone 15 Pro Max</a></h3>
+                        <div class="cart-item-price">12 999 000 so'm</div>
+                    </div>
+                    <div class="cart-item-qty">1 dona</div>
+                    <div class="cart-item-subtotal">12 999 000 so'm</div>
+                    <a class="cart-remove" href="mahsulotlar.html" title="Mahsulotlar"><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+
+                <div class="cart-item">
+                    <a href="mahsulot-detail.html" class="cart-item-image"><img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=900&q=80" alt="MacBook Air M3"></a>
+                    <div class="cart-item-info">
+                        <span class="product-category">Noutbuklar</span>
+                        <h3><a href="mahsulot-detail.html">MacBook Air M3 13"</a></h3>
+                        <div class="cart-item-price">15 499 000 so'm</div>
+                    </div>
+                    <div class="cart-item-qty">1 dona</div>
+                    <div class="cart-item-subtotal">15 499 000 so'm</div>
+                    <a class="cart-remove" href="mahsulotlar.html" title="Mahsulotlar"><i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <aside class="cart-summary card-surface">
+                <h3>Buyurtma xulosasi</h3>
+                <div class="summary-row"><span>Mahsulotlar</span><strong>28 498 000 so'm</strong></div>
+                <div class="summary-row"><span>Yetkazib berish</span><strong>Bepul</strong></div>
+                <div class="summary-total"><span>Jami</span><strong>28 498 000 so'm</strong></div>
+                <a href="checkout.html" class="btn btn-primary" style="width:100%;margin-top:18px;">Checkoutga o'tish</a>
+            </aside>
+        </section>
+    </div>
+</main>
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+

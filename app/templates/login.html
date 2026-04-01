@@ -1,0 +1,51 @@
+
+
+
+
+
+
+
+
+
+
+{% extends 'base.html' %}
+
+{% block title %} Forgot-password {% endblock title %}
+
+{% block content %}
+
+<main class="page-section">
+    <div class="container auth-wrapper">
+        <div class="auth-card">
+            <h1>Tizimga kirish</h1>
+            <p class="subtitle">Xaridlarni davom ettirish uchun o'z hisobingizga kiring</p>
+            <form data-toast="Tizimga muvaffaqiyatli kirdingiz!" data-redirect="index.html">
+                <div class="form-group mb-2">
+                    <label>Email manzilingiz</label>
+                    <input type="email" required placeholder="misol@gmail.com">
+                </div>
+                <div class="form-group mb-2">
+                    <label style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                        <span>Parol</span>
+                        <a href="forgot-password.html" class="auth-link" style="margin:0; font-size:0.85rem; font-weight:400;">Parolni unutdingizmi?</a>
+                    </label>
+                    <input type="password" required placeholder="********">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; margin-top:10px; font-size:1.1rem; padding:14px;">Kirish</button>
+            </form>
+            <div class="auth-divider">yoki</div>
+            <p class="text-center" style="color: var(--text-gray); font-size: 0.95rem;">Hisobingiz yo'qmi? <a href="register.html" class="auth-link" style="margin-top: 0;">Ro'yxatdan o'tish</a></p>
+        </div>
+    </div>
+</main>
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+

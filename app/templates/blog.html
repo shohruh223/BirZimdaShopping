@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %} Blog {% endblock title %}
+
+{% block content %}
+<main class="page-section">
+    <div class="container">
+        <div class="section-title">
+            <h1>Texnologiyalar Olami</h1>
+            <p>Texnika tanlash bo'yicha foydali maslahatlar va yangiliklar</p>
+            <div class="line"></div>
+        </div>
+
+        <div class="blog-grid">
+            {% for portfolio in portfolio %}
+            <article class="blog-card">
+
+                
+                <a href="{% url 'blog-detail' portfolio.id %}" class="blog-img">
+                    <img src="{{ portfolio.img.url }}" alt="{{ portfolio.title }}">
+                </a>
+
+                <div class="blog-content">
+
+
+                    <div class="blog-meta">
+                        <span>
+                            <i class="fa-solid fa-calendar-day"></i>
+                            {{ portfolio.created_at|date:"d M, Y" }}
+                        </span>
+                        <span style="color:var(--text-gray)">
+                            <i class="fa-solid fa-user-edit"></i>
+                            {{ portfolio.author }}
+                        </span>
+                    </div>
+
+                    <!-- TITLE -->
+                    <h3 class="blog-title">
+                        <a href="{% url 'blog-detail' portfolio.id %}">
+                            {{ portfolio.title }}
+                        </a>
+                    </h3>
+
+                    <!-- DESC -->
+                    <p class="blog-desc">
+                        {{ portfolio.description }}
+                    </p>
+
+
+                    <a href="{% url 'blog-detail' portfolio.id %}" class="read-more">
+                        O'qishni davom ettirish
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+
+        <nav class="pagination" aria-label="Portfolio pagination">
+            {% if page_obj.has_previous %}
+                <a class="page-btn" href="?page={{ page_obj.previous_page_number }}">‹</a>
+            {% endif %}
+
+            {% for page in page_obj.paginator.page_range %}
+                {% if page == page_obj.number %}
+                    <a class="page-btn active" href="#">{{ page }}</a>
+                {% else %}
+                    <a class="page-btn" href="?page={{ page }}">{{ page }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a class="page-btn" href="?page={{ page_obj.next_page_number }}">›</a>
+            {% endif %}
+        </nav>
+
+    </div>
+</main>
+{% endblock content %}

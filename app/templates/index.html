@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block title %} Bosh sahifa {% endblock title %}
+
+{% block content %}
+<main class="page-section">
+    <div class="container">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Zamonaviy texnika <span>Bir Zumda</span> uyingizda!</h1>
+                <p>Eng so'nggi rusumdagi smartfonlar, noutbuklar va maishiy texnikalarni qulay narxlarda va rasmiy kafolat bilan xarid qiling.</p>
+                <a href="mahsulotlar.html" class="btn btn-accent" style="font-size:1.1rem; padding:15px 35px;">Mahsulotlarga o'tish <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="hero-image">
+                <img src="photo_2026-03-29_19-07-53.jpg" alt="Bir Zumda texnika">
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-rocket"></i></div><h3>Tezkor yetkazib berish</h3><p>Toshkent bo'ylab 2 soat ichida yetkaziladi</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-shield-check"></i></div><h3>Rasmiy kafolat</h3><p>Barcha mahsulotlarga 1-3 yillik kafolat</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-wallet"></i></div><h3>Muddatli to'lov</h3><p>Boshlang'ich to'lovsiz, qulay shartlarda</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-headset"></i></div><h3>24/7 Qo'llab-quvvatlash</h3><p>Siz uchun doim aloqadamiz</p></div>
+        </div>
+
+        <div class="section-title mt-4"><h2>Top Sotuvlar</h2><p>Xaridorlarimizning eng ko'p tanlagan texnikalari</p><div class="line"></div></div>
+        
+<div class="product-grid">
+   {% for product in products %}
+                    <div class="product-card">
+
+                        {% if product.old_price %}
+                        <div class="badge">Chegirma</div>
+                        {% else %}
+                        <div class="badge">Yangi</div>
+                        {% endif %}
+
+                        <a href="{% url 'mahsulot-detail' product.id %}" class="product-img">
+                            <img src="{{ product.img.url }}" alt="{{ product.title }}">
+                        </a>
+
+                        <div class="product-info">
+
+                            <div class="product-category">
+                                {{ product.category }}
+                            </div>
+
+                            <h3 class="product-title">
+                                <a href="{% url 'mahsulot-detail' product.id %}">
+                                    {{ product.title }}
+                                </a>
+                            </h3>
+
+                        <ul class="rating">
+    <li class="{% if product.review < 1 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+    <li class="{% if product.review < 2 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+    <li class="{% if product.review < 3 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+    <li class="{% if product.review < 4 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+    <li class="{% if product.review < 5 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+</ul>
+
+                            <div class="product-price-row">
+
+                                <div class="price-box">
+                                    {% if product.old_price %}
+                                        <span class="old-price">
+                                            {{ product.old_price }} $
+                                        </span>
+                                    {% endif %}
+
+                                    <span class="price">
+                                        {{ product.price }} $
+                                    </span>
+                                </div>
+
+
+                                <a href="#" class="add-cart-btn">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </a>
+                            </div>
+
+                            <a href="{% url 'mahsulot-detail' product.id %}" class="btn btn-outline">
+                                Batafsil
+                            </a>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+</div>
+
+
+        <div class="promo-banner"><div class="promo-content"><h2>Yangi iPhone 15 Pro <br><span>Sotuvda!</span></h2><p style="font-size:1.2rem; margin-bottom:25px; opacity:0.9;">Titanium korpus, A17 Pro chip va professional kameralar tizimi. Hozir xarid qiling va maxsus sovg'aga ega bo'ling.</p><a href="mahsulotlar.html" class="btn btn-primary" style="background: var(--white); color: var(--text-dark);">Batafsil ko'rish</a></div></div>
+
+        <div class="section-title mt-4"><h2>Yangi Kelganlar</h2><p>Eng so'nggi texnologiya yangiliklari</p><div class="line"></div></div>
+        
+<div class="product-grid">
+   {% for product in products %}
+                    <div class="product-card">
+
+                        {% if product.old_price %}
+                        <div class="badge">Chegirma</div>
+                        {% else %}
+                        <div class="badge">Yangi</div>
+                        {% endif %}
+
+                        <a href="{% url 'mahsulot-detail' product.id %}" class="product-img">
+                            <img src="{{ product.img.url }}" alt="{{ product.title }}">
+                        </a>
+
+                        <div class="product-info">
+
+                            <div class="product-category">
+                                {{ product.category }}
+                            </div>
+
+                            <h3 class="product-title">
+                                <a href="{% url 'mahsulot-detail' product.id %}">
+                                    {{ product.title }}
+                                </a>
+                            </h3>
+
+                        <ul class="rating">
+    <li class="{% if product.review < 1 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+    <li class="{% if product.review < 2 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+    <li class="{% if product.review < 3 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+    <li class="{% if product.review < 4 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+    <li class="{% if product.review < 5 %}empty{% endif %}">
+        <i class="fa fa-star"></i>
+    </li>
+</ul>
+
+                            <div class="product-price-row">
+
+                                <div class="price-box">
+                                    {% if product.old_price %}
+                                        <span class="old-price">
+                                            {{ product.old_price }} $
+                                        </span>
+                                    {% endif %}
+
+                                    <span class="price">
+                                        {{ product.price }} $
+                                    </span>
+                                </div>
+
+
+
+                                <a href="#" class="add-cart-btn">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </a>
+                            </div>
+
+                            <a href="{% url 'mahsulot-detail' product.id %}" class="btn btn-outline">
+                                Batafsil
+                            </a>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+</div>
+
+    </div>
+</main>
+{% endblock content %}

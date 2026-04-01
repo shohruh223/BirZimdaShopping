@@ -1,0 +1,50 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block title %} Aloqa-detail {% endblock title %}
+
+{% block content %}
+    <main class="page-section">
+    <div class="container">
+        <div class="breadcrumb"><a href="index.html">Bosh sahifa</a><span>/</span><a href="blog.html">Blog</a><span>/</span><span>2026-yilda smartfon tanlashda 7 ta muhim jihat</span></div>
+        <section class="blog-detail-hero card-surface">
+            <div class="blog-detail-content">
+                <div class="detail-chip-wrap"><span class="detail-chip">Texnologiya maslahatlari</span></div>
+                <h1>{{ portfolio.title }}</h1>
+                <div class="blog-detail-meta">
+                    <span><i class="fa-solid fa-calendar-day"></i> {{ portfolio.created_at }}</span>
+                    <span><i class="fa-solid fa-user-edit"></i> {{ portfolio.author  }}</span>
+                </div>
+                <p class="detail-short-desc">{{ portfolio.description }}</p>
+            </div>
+            <div class="blog-detail-cover"><img src="{{ portfolio.img.url }}" alt="Smartfon tanlash"></div>
+        </section>
+        <section class="blog-detail-layout">
+            <article class="card-surface article-body">
+                <p>Bu sahifa ham to'liq static frontend ko'rinishida tayyorlangan. Ichidagi matnlar oddiy HTML orqali yozilgan va hech qanday template yoki JavaScript render ishlatilmagan.</p>
+                <h3>1. Ekran sifati</h3>
+                <p>AMOLED yoki OLED ekranlar kundalik foydalanishda yorqin ranglar va qulay ko'rinish beradi. Yangilanish tezligi ham muhim.</p>
+                <h3>2. Kamera imkoniyatlari</h3>
+                <p>Agar surat va video muhim bo'lsa, sensor hajmi, optik stabilizatsiya va tungi rejim sifatiga e'tibor qarating.</p>
+                <h3>3. Batareya va zaryad</h3>
+                <p>Katta batareya sig'imi va tezkor zaryadlash funksiyasi kun davomida qulaylik yaratadi.</p>
+                <h3>4. Xotira</h3>
+                <p>2026-yilda kamida 256 GB xotira ko'p foydalanuvchilar uchun ancha qulay variant hisoblanadi.</p>
+            </article>
+            <aside class="blog-sidebar-detail">
+                <div class="card-surface side-widget">
+                    <h3>Tavsiya etilgan mahsulotlar</h3>
+                    <div class="mini-related-list">
+                        <a class="mini-related-item" href="mahsulot-detail.html"><img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80" alt="iPhone"><div><h4>iPhone 15 Pro Max</h4><span>12 999 000 so'm</span></div></a>
+                        <a class="mini-related-item" href="mahsulot-detail.html"><img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=80" alt="Samsung"><div><h4>Galaxy S24 Ultra</h4><span>11 799 000 so'm</span></div></a>
+                        <a class="mini-related-item" href="mahsulot-detail.html"><img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=900&q=80" alt="MacBook"><div><h4>MacBook Air M3</h4><span>15 499 000 so'm</span></div></a>
+                    </div>
+                </div>
+            </aside>
+        </section>
+    </div>
+</main>
+{% endblock content %}
+

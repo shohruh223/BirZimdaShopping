@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block title %} Mahsulotlar {% endblock title %}
+
+{% block content %}
+    <main class="page-section">
+        <div class="container">
+
+            <div class="section-title">
+                <h1>Mahsulotlar</h1>
+                <p>Barcha texnikalar bir joyda</p>
+                <div class="line"></div>
+            </div>
+
+            <!-- SHOP LAYOUT (index dizayniga o‘xshatildi) -->
+            <div class="shop-layout">
+
+                <!-- SIDEBAR -->
+                <aside class="shop-sidebar">
+                    <div class="filter-group">
+                        <h4>Toifalar</h4>
+                        <ul class="filter-list">
+                            <li><label><input type="radio" checked> Barchasi</label></li>
+                            <li><label><input type="radio"> Smartfonlar</label></li>
+                            <li><label><input type="radio"> Noutbuklar</label></li>
+                            <li><label><input type="radio"> Televizorlar</label></li>
+                            <li><label><input type="radio"> Maishiy texnika</label></li>
+                        </ul>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Brendlar</h4>
+                        <ul class="filter-list">
+                            <li><label><input type="checkbox"> Apple</label></li>
+                            <li><label><input type="checkbox"> Samsung</label></li>
+                            <li><label><input type="checkbox"> LG</label></li>
+                            <li><label><input type="checkbox"> Xiaomi</label></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- MAIN -->
+                <div class="shop-main">
+
+                    <!-- SEARCH -->
+                    <form class="shop-header">
+                        <div class="shop-search">
+                            <i class="fa-solid fa-search"></i>
+                            <input type="text" placeholder="Model yoki nomini kiriting...">
+                        </div>
+
+                        <div class="shop-sort">
+                            <select>
+                                <option>Ommabopligi</option>
+                                <option>Arzonlari oldin</option>
+                                <option>Qimmatlari oldin</option>
+                                <option>Yangilari</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Filtrlash</button>
+                    </form>
+
+                    <!-- PRODUCTS GRID -->
+                    <div class="product-grid">
+
+                        {% for product in products %}
+                            <div class="product-card">
+
+                                {% if product.old_price %}
+                                    <div class="badge">Chegirma</div>
+                                {% else %}
+                                    <div class="badge">Yangi</div>
+                                {% endif %}
+
+                                <a href="{% url 'mahsulot-detail' product.id %}" class="product-img">
+                                    <img src="{{ product.img.url }}" alt="{{ product.title }}">
+                                </a>
+
+                                <div class="product-info">
+
+                                    <div class="product-category">
+                                        {{ product.category }}
+                                    </div>
+
+                                    <h3 class="product-title">
+                                        <a href="{% url 'mahsulot-detail' product.id %}">
+                                            {{ product.title }}
+                                        </a>
+                                    </h3>
+
+                                    <ul class="rating">
+                                        <li class="{% if product.review < 1 %}empty{% endif %}">
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li class="{% if product.review < 2 %}empty{% endif %}">
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li class="{% if product.review < 3 %}empty{% endif %}">
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li class="{% if product.review < 4 %}empty{% endif %}">
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li class="{% if product.review < 5 %}empty{% endif %}">
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                    </ul>
+
+                                    <div class="product-price-row">
+
+                                        <div class="price-box">
+                                            {% if product.old_price %}
+                                                <span class="old-price">
+                                            {{ product.old_price }} $
+                                        </span>
+                                            {% endif %}
+
+                                            <span class="price">
+                                        {{ product.price }} $
+                                    </span>
+                                        </div>
+
+
+                                        <a href="#" class="add-cart-btn">
+                                            <i class="fa-solid fa-cart-plus"></i>
+                                        </a>
+                                    </div>
+
+                                    <a href="{% url 'mahsulot-detail' product.id %}" class="btn btn-outline">
+                                        Batafsil
+                                    </a>
+
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <!-- PAGINATION -->
+                    <div class="pagination">
+
+                        {% if page_obj.has_previous %}
+                            <a class="page-btn" href="?page={{ page_obj.previous_page_number }}">‹</a>
+                        {% endif %}
+
+                        {% for page in page_obj.paginator.page_range %}
+                            {% if page == page_obj.number %}
+                                <a class="page-btn active" href="#">{{ page }}</a>
+                            {% else %}
+                                <a class="page-btn" href="?page={{ page }}">{{ page }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a class="page-btn" href="?page={{ page_obj.next_page_number }}">›</a>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+{% endblock content %}

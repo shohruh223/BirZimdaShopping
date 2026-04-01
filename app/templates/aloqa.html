@@ -1,0 +1,56 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %} Aloqa {% endblock title %}
+
+{% block content %}
+    <main class="page-section">
+    <div class="container">
+        <div class="section-title">
+            <h1>Biz bilan Aloqa</h1>
+            <p>Savol yoki takliflaringiz bormi? Bizga yozing!</p>
+            <div class="line"></div>
+        </div>
+
+        <div class="contact-grid">
+            <div>
+                <div class="info-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4 style="font-size:1.2rem; margin-bottom:5px;">Bosh Ofis</h4>
+                        <p>Toshkent shahri, IT Park, Ziyolilar ko'chasi 9</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <h4 style="font-size:1.2rem; margin-bottom:5px;">Call Markaz</h4>
+                        <p>+998 71 200 11 22<br>Har kuni 24/7 ishlaydi</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <h4 style="font-size:1.2rem; margin-bottom:5px;">Elektron pochta</h4>
+                        <p>info@birzumda.uz<br>support@birzumda.uz</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-card">
+                <h3 style="margin-bottom:25px;">Xabar yuborish</h3>
+                <form data-toast="Xabaringiz muvaffaqiyatli yuborildi!" action="{% url 'aloqa' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group"><input type="text" name="name" placeholder="Ismingiz" required></div>
+                        <div class="form-group"><input type="text" name="phone_number" placeholder="Telefon raqamingiz" required></div>
+                    </div>
+                    <div class="form-group mb-2"><input type="text" name="subject" placeholder="Mavzu" required></div>
+                    <div class="form-group mb-2"><textarea name="message" rows="5" placeholder="Sizning xabaringiz..." required></textarea></div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Yuborish <i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
