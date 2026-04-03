@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
@@ -18,22 +19,41 @@ class IndexView(ListView):
         context["top_products"] = Product.objects.order_by('-review')[:4]
         return context
 
+
 class MahsulotListView(ListView):
     template_name = 'mahsulotlar.html'
     model = Product
     paginate_by = 3
     context_object_name = 'products'
 
+    def get_queryset(self):
+        queryset = Product.objects.all()
+        q = self.request.GET.get('q')
+
+        sort = self.request.GET.get('sort')
+        if sort == 'title_asc':
+            queryset = queryset.order_by('title')
+        elif sort == 'price_asc':
+            queryset = queryset.order_by('price')
+        elif sort == 'price_desc':
+            queryset = queryset.order_by('-price')
+        elif sort == 'rating_desc':
+            queryset = queryset.order_by('-review')
+
+        if q:
+            queryset = queryset.filter(
+                Q(title__icontains=q))
+
+
+        return queryset
 
 class MahsulotDetailView(DetailView):
     template_name = 'mahsulot-detail.html'
     model = Product
     context_object_name = 'product'
 
-
 class BizHaqimizdaView(TemplateView):
     template_name = 'biz-haqimizda.html'
-
 
 class BlogListView(ListView):
     model = Portfolio
@@ -41,42 +61,32 @@ class BlogListView(ListView):
     template_name = 'blog.html'
     context_object_name = 'portfolio'
 
-
 class BlogDetailView(DetailView):
     template_name = 'blog-detail.html'
 
     model = Portfolio
     context_object_name = 'portfolio'
 
-
-
 class CheckoutView(TemplateView):
     template_name = 'checkout.html'
-
 
 class ConfirmPasswordView(TemplateView):
     template_name = 'confirm-password.html'
 
-
 class ForgotPasswordView(TemplateView):
     template_name = 'forgot-password.html'
-
 
 class LoginView(TemplateView):
     template_name = 'login.html'
 
-
 class RegisterView(TemplateView):
     template_name = 'register.html'
-
 
 class ResetPasswordView(TemplateView):
     template_name = 'reset-password.html'
 
-
 class SavatchaView(TemplateView):
     template_name = 'savatcha.html'
-
 
 class AloqaView(FormView):
     template_name = 'aloqa.html'

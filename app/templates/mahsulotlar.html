@@ -46,19 +46,19 @@
                     <form class="shop-header">
                         <div class="shop-search">
                             <i class="fa-solid fa-search"></i>
-                            <input type="text" placeholder="Model yoki nomini kiriting...">
+                            <input type="text" name="q" placeholder="Model yoki nomini kiriting...">
+
                         </div>
+                        <button type="submit" class="btn btn-primary">Qidiruv</button>
 
                         <div class="shop-sort">
-                            <select>
-                                <option>Ommabopligi</option>
-                                <option>Arzonlari oldin</option>
-                                <option>Qimmatlari oldin</option>
-                                <option>Yangilari</option>
+                            <select name="sort" onchange="this.form.submit()">
+                                <option value="title_asc">Nomi</option>
+                                <option value="price_asc">Narxi</option>
+                                <option value="price_desc">Narxi kamayish</option>
+                                <option value="rating_desc">Baholash</option>
                             </select>
                         </div>
-
-                        <button type="submit" class="btn btn-primary">Filtrlash</button>
                     </form>
 
                     <!-- PRODUCTS GRID -->
