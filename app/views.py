@@ -1,8 +1,14 @@
+from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView
 from django.db.models import Q
-from django.views.generic import ListView, DetailView
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.views import View
+from django.views.generic import CreateView
+from django.views.generic import ListView, DetailView
 from django.views.generic import TemplateView, FormView
-from app.form import ContactForm
+
+from app.form import RegisterForm, EmailLoginForm, ContactForm
 from app.models import Portfolio, Product
 
 
@@ -76,11 +82,6 @@ class ConfirmPasswordView(TemplateView):
 class ForgotPasswordView(TemplateView):
     template_name = 'forgot-password.html'
 
-class LoginView(TemplateView):
-    template_name = 'login.html'
-
-class RegisterView(TemplateView):
-    template_name = 'register.html'
 
 class ResetPasswordView(TemplateView):
     template_name = 'reset-password.html'
@@ -96,3 +97,37 @@ class AloqaView(FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
+
+# -------------------- Auth
+
+
+
+class RegisterView(CreateView):
+    form_class = RegisterForm
+    template_name = "register.html"
+    success_url = reverse_lazy("login")
+
+    def form_valid(self, form):
+        super().form_valid(form)
+        logout(self.request)
+        return redirect("login")
+
+
+
+class UserLoginView(LoginView):
+    authentication_form = EmailLoginForm
+    template_name = "login.html"
+    redirect_authenticated_user = True
+
+
+
+
+class UserLogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect("login")
+
+    def post(self, request):
+        logout(request)
+        return redirect("login")

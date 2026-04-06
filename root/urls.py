@@ -5,7 +5,7 @@ from django.urls import path
 
 from app.views import IndexView, MahsulotListView, MahsulotDetailView, AloqaView, BizHaqimizdaView, BlogListView, \
     BlogDetailView, CheckoutView, SavatchaView, LoginView, RegisterView, ForgotPasswordView, ResetPasswordView, \
-    ConfirmPasswordView
+    ConfirmPasswordView, UserLoginView, UserLogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,8 +26,10 @@ urlpatterns = [
     path('checkout.html', CheckoutView.as_view(), name='checkout'),
     path('savatcha.html', SavatchaView.as_view(), name='savatcha'),
 
-    path('login.html', LoginView.as_view(), name='login'),
+    path('login.html', UserLoginView.as_view(), name='login'),
     path('register.html', RegisterView.as_view(), name='register'),
+    path('logout/', UserLogoutView.as_view(), name='logout'),
+
 
     path('forgot-password.html', ForgotPasswordView.as_view(), name='forgot-password'),
     path('reset-password.html', ResetPasswordView.as_view(), name='reset-password'),

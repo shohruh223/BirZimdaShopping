@@ -5,37 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}  {% endblock title %}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <style>
     .rating {
-    display: flex;
-    gap: 4px;
-    padding: 0;
-}
+        display: flex;
+        gap: 4px;
+        padding: 0;
+    }
 
-.rating li {
-    list-style: none;
-    color: #f59e0b; /* sariq */
-    margin-bottom: 7px;
-}
+    .rating li {
+        list-style: none;
+        color: #f59e0b; /* sariq */
+        margin-bottom: 7px;
+    }
 
-.rating li.empty {
-    color: #d1d5db; /* kulrang */
-}
+    .rating li.empty {
+        color: #d1d5db; /* kulrang */
+    }
 </style>
 <body>
 <header>
     <div class="container navbar">
         <a href="index.html" class="logo"><i class="fa-solid fa-bolt"></i> Bir Zumda</a>
         <ul class="nav-links" id="nav-links">
-            <li><a href="{% url 'index' %}">Bosh sahifa</a></li>
-            <li><a href="{% url 'mahsulotlar' %}">Mahsulotlar</a></li>
-            <li><a href="{% url 'blog' %}">Blog</a></li>
-            <li><a href="{% url 'biz-haqimizda' %}">Biz haqimizda</a></li>
-            <li><a href="{% url 'aloqa' %}">Aloqa</a></li>
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'index' %}">Bosh sahifa</a></li>
+                <li><a href="{% url 'mahsulotlar' %}">Mahsulotlar</a></li>
+                <li><a href="{% url 'blog' %}">Blog</a></li>
+                <li><a href="{% url 'biz-haqimizda' %}">Biz haqimizda</a></li>
+                <li><a href="{% url 'aloqa' %}">Aloqa</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
         </ul>
         <div class="nav-icons">
             <a href="#" id="theme-toggle" title="Tungi rejim"><i class="fa-solid fa-moon"></i></a>
@@ -60,7 +67,8 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <a href="index.html" class="logo"><i class="fa-solid fa-bolt"></i> Bir Zumda</a>
-                <p style="margin-top: 15px;">O'zbekistondagi eng tezkor va ishonchli maishiy texnika xarid qilish platformasi. Orzuingizdagi texnikani bir zumda xarid qiling!</p>
+                <p style="margin-top: 15px;">O'zbekistondagi eng tezkor va ishonchli maishiy texnika xarid qilish
+                    platformasi. Orzuingizdagi texnikani bir zumda xarid qiling!</p>
                 <div class="social-links">
                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#"><i class="fa-brands fa-telegram"></i></a>
